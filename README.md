@@ -13,6 +13,7 @@ Most AI-powered PKM systems try to recreate a goal cascade: vision → annual �
 
 - **Senso/** — who you are, where you go, what you cultivate (Direzione, Pratiche)
 - **Daily Notes/** — the day, written as prose
+- **People/** — your constellation. Profiles of the people who recur in your writing. Linking to `[[People/Name]]` from a daily makes a person legible across time: who you wrote about, when, in what state.
 - **Themes/** — longitudinal patterns that emerge, captured by `/weave`
 - **Projects/** — only when an initiative becomes concrete enough to deserve its own file
 
@@ -80,6 +81,7 @@ Try:
 | `/monthly` | Roll-up of the month, intention for the next. |
 | `/weave` | Longitudinal pattern analysis: reads recent dailies, classifies patterns (Evolution / Weaving / New) and updates `Themes/Weave-Log.md`. |
 | `/senso-tracking` | Coherence mirror between Direzione/Pratiche and what you actually write & do. Surfaces gaps, not metrics. |
+| `/agenda` | Manages Agenda.md (root): adds appointments inline, archives past rows, populates "📅 Today" in the daily. |
 | `/project` | Create, track, archive projects. |
 | `/push` | Commit & push. |
 | `/check-links` | Scan for broken wiki-links. |
@@ -87,7 +89,7 @@ Try:
 
 ## Customization
 
-- **Personal compass**: write `Senso/Direzione.md` and `Senso/Pratiche.md` (treat them as pre-prompted with guiding questions — go with your own).
+- **Personal compass**: copy `Templates/Direzione Template.md` to `Senso/Direzione.md` and `Templates/Pratiche Template.md` to `Senso/Pratiche.md`, then rewrite in your own voice. The templates contain guiding questions, not OKRs.
 - **Language**: skill prompts are in English. To use the system in another language, translate `.claude/skills/*/SKILL.md` files and `Templates/`.
 - **Hooks**: see `.claude/settings.json`. Disable by setting `command` to `null`.
 - **Permissions**: add personal entries in `.claude/settings.local.json` (gitignored).
