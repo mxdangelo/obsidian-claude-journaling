@@ -56,8 +56,10 @@ Filter out results from `.claude/`, `.obsidian/`, and `Templates/` directories.
 Organise matches into sections by their parent directory:
 
 - **Daily Notes/** — journal entries
-- **Goals/** — goal and vision documents
+- **Senso/** — Direzione, Pratiche, Monthly, Weekly Review
 - **Projects/** — project notes
+- **Themes/** — longitudinal themes
+- **People/** — people profiles
 - **Archives/** — archived content
 - **Inbox/** — unprocessed items
 - **(root)** — top-level notes
@@ -76,8 +78,8 @@ Format output as:
 ### Projects/
 - **Project Alpha.md** (line 45): ...matching context...
 
-### Goals/
-- **2024 Goals.md** (line 12): ...matching context...
+### Senso/
+- **Direzione.md** (line 12): ...matching context...
 
 **Found X matches across Y files**
 ```

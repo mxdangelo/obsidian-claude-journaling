@@ -51,7 +51,7 @@ Based on your changes:
 Daily note for 2024-01-15 + 3 project updates
 - Added: Daily Notes/2024-01-15.md
 - Modified: Projects/Learning Spanish/notes.md
-- Modified: Goals/2. Monthly Goals.md
+- Modified: Senso/Monthly 2026-05.md
 ```
 
 ### With Timestamp

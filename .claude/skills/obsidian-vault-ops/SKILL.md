@@ -15,8 +15,10 @@ Core operations for reading, writing, and managing files in an Obsidian vault.
 vault-root/
 ├── CLAUDE.md           # Main context (always read first)
 ├── Daily Notes/        # YYYY-MM-DD.md format
-├── Goals/              # Goal cascade files
+├── Senso/              # Direzione, Pratiche, Monthly, Weekly Review
 ├── Projects/           # Project folders with CLAUDE.md
+├── Themes/             # Weave-Log and theme files
+├── People/             # People profiles
 ├── Templates/          # Reusable note structures
 └── Archives/           # Completed/inactive content
 ```

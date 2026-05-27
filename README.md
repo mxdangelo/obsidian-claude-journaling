@@ -79,6 +79,7 @@ Try:
 | `/weekly` | Weekly review. Triggers `/weave` if overdue. |
 | `/monthly` | Roll-up of the month, intention for the next. |
 | `/weave` | Longitudinal pattern analysis: reads recent dailies, classifies patterns (Evolution / Weaving / New) and updates `Themes/Weave-Log.md`. |
+| `/senso-tracking` | Coherence mirror between Direzione/Pratiche and what you actually write & do. Surfaces gaps, not metrics. |
 | `/project` | Create, track, archive projects. |
 | `/push` | Commit & push. |
 | `/check-links` | Scan for broken wiki-links. |
