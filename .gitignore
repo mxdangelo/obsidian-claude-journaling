@@ -2,8 +2,9 @@
 Daily Notes/*.md
 Senso/*.md
 Projects/*/
-Temi/*.md
-Persone/*.md
+Themes/*.md
+!Themes/Weave-Log.md
+People/*.md
 Archives/**
 Inbox/**
 
