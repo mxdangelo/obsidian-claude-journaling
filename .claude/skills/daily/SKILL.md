@@ -16,16 +16,21 @@ Create today's daily at `Daily Notes/YYYY-MM-DD.md`. If it exists, open it and s
    - Doesn't exist → continue.
 2. **Read** `Templates/Daily Template.md`.
 3. **Glob** `Daily Notes/*.md`, take the most recent daily, **Read**.
-4. **Extract for carry-over** from the previous daily:
-   - Unchecked tasks under `### 🔴 Must do today`, `### 🏠 Personal`, `### 💼 Work` (if not a `tasks` query block)
-   - Content of `### Tomorrow's priority`
+4. **Extract carry-overs grouped by source section** from the previous daily:
+   - Unchecked items under `### 🔴 Must do today`
+   - Unchecked items under `### 🏠 Personal`
+   - Unchecked items under `### 💼 Work` (skip if it's a `tasks` query block, leave the query intact)
+   - Content of `### Tomorrow's priority` (will go into the new Must do today)
 5. **Substitute** template placeholders:
    - `{{date}}` → ISO (`YYYY-MM-DD`)
    - `{{date:dddd, MMMM DD, YYYY}}` → e.g. `Wednesday, May 27, 2026`
    - `{{date-1:YYYY-MM-DD}}`, `{{date+1:YYYY-MM-DD}}` → yesterday / tomorrow
    - `{{date:YYYY-[W]WW}}` → ISO week (e.g. `2026-W22`)
    - `{{date:DDD}}` → day of year, `{{date:WW}}` → week number
-6. **Fill** `### 🔴 Must do today` with the identified carry-overs.
+6. **Fill the new note preserving sections:**
+   - `### 🔴 Must do today` ← carry-overs from previous Must do **+** Tomorrow's priority
+   - `### 🏠 Personal` ← carry-overs from previous Personal
+   - `### 💼 Work` ← carry-overs from previous Work (or leave the `tasks` query block intact)
 7. **Write** the file. Brief confirmation to the user.
 
 ## Notes
