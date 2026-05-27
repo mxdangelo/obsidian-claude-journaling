@@ -1,0 +1,24 @@
+# Personal vault content — committed by user choice, not by default
+Daily Notes/*.md
+Senso/*.md
+Projects/*/
+Temi/*.md
+Persone/*.md
+Archives/**
+Inbox/**
+
+# Preserve folder structure
+!**/.gitkeep
+
+# Claude Code local
+.claude/settings.local.json
+
+# Obsidian
+.obsidian/workspace*
+.obsidian/cache
+.obsidian/plugins/*/data.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
