@@ -1,0 +1,7 @@
+This file marks a fresh vault that hasn't been initialized yet.
+
+While it exists, every Claude Code session start will nudge you to run /init —
+which walks you through setting up your personal compass (Senso/Direzione.md
+and Senso/Pratiche.md) and then removes this file as its last step.
+
+If you set up Senso by hand, delete this file yourself to silence the nudge.

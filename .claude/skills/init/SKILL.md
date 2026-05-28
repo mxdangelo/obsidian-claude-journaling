@@ -1,7 +1,7 @@
 ---
 name: init
 description: Initialize Senso/ on a fresh vault. Walks through the personal compass (Direzione + Pratiche) conversationally, creating Senso/Direzione.md and Senso/Pratiche.md from templates. Auto-suggested by SessionStart when Senso is empty.
-allowed-tools: Read, Write, Glob
+allowed-tools: Read, Write, Glob, Bash
 user-invocable: true
 ---
 
@@ -44,7 +44,15 @@ Same flow as Direzione, with `Templates/Pratiche Template.md`.
 
 ### 3. Close
 
-One-line confirmation of what was created. Suggest `/daily` to start journaling.
+**Remove the first-run sentinel** so the session-start nudge stops appearing:
+
+```bash
+rm FIRST_RUN
+```
+
+Only do this if at least one of the two files was actually created in this run. If both already existed (safety check stopped you at step 1), leave `FIRST_RUN` alone — the user may have it intentionally.
+
+Then: one-line confirmation of what was created. Suggest `/daily` to start journaling.
 
 ## Notes
 

@@ -22,22 +22,17 @@ echo "PKM Session initialized"
 echo "  Vault: $VAULT_PATH"
 echo "  Today: $TODAY"
 
-# Senso bootstrap check — the compass must exist for /senso-tracking,
-# /weekly, /monthly to mean anything. Nudge until the user runs /init.
-SENSO_DIR="$VAULT_PATH/${SENSO_DIR:-Senso}"
-MISSING_SENSO=""
-if [ ! -f "$SENSO_DIR/Direzione.md" ]; then
-    MISSING_SENSO="${MISSING_SENSO}Direzione.md "
-fi
-if [ ! -f "$SENSO_DIR/Pratiche.md" ]; then
-    MISSING_SENSO="${MISSING_SENSO}Pratiche.md "
-fi
-if [ -n "$MISSING_SENSO" ]; then
+# First-run sentinel. While FIRST_RUN exists, nudge the user toward /init.
+# /init removes the file as its last step, so this check costs one stat in
+# steady state and stops producing output forever once init is done.
+if [ -f "$VAULT_PATH/FIRST_RUN" ]; then
     echo ""
-    echo "  Senso not yet initialized (missing: $MISSING_SENSO)"
-    echo "  Run /init to set up your personal compass (Direzione + Pratiche)."
-    echo "  Until then, /senso-tracking, /weekly and /monthly have nothing to mirror."
+    echo "  Fresh vault detected. Run /init to set up your personal compass"
+    echo "  (Senso/Direzione.md + Senso/Pratiche.md). Until then,"
+    echo "  /senso-tracking, /weekly and /monthly have nothing to mirror."
 fi
+
+SENSO_DIR="$VAULT_PATH/${SENSO_DIR:-Senso}"
 
 # Surface the most recent Weekly Review's ONE Big Thing, if any
 WEEKLY_REVIEW=$(find "$SENSO_DIR" -maxdepth 1 -name "Weekly Review*.md" 2>/dev/null | sort | tail -1)
