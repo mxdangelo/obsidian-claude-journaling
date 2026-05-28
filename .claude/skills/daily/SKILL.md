@@ -38,3 +38,17 @@ Create today's daily at `Daily Notes/YYYY-MM-DD.md`. If it exists, open it and s
 - Don't call `TaskCreate`. Don't read `Senso/`, `Projects/`, `Themes/` unless the user explicitly asks ("morning routine", "cascade context", "review goals").
 - Respect the user's writing language: if previous dailies are in a non-English language, write section bodies in the same language. Headers from the template stay as templated.
 - If the user asks to update `Agenda.md`, check whether the current day's row is past and move it to the file's Archive section.
+
+## Closing the day
+
+When the user asks to close the day ("close the day", "end of day", etc.), fill the closing sections by **extracting from what they already shared** during the day — don't ask questions:
+
+- `⬆️⬇️ Highs & Lows` — identify the highest and lowest moments from the day's content.
+- `### What went well?` — one or two concrete things that emerged from the narrative.
+- `### What could be better?` — a self-critique already implicit in what was said.
+- `### What did I learn?` — concepts, realizations, insights named during the day.
+- `### Energy` (Physical / Mental / Emotional /10) — this isn't extractable: leave it blank without commenting.
+
+## Themes
+
+In the `## Themes` section of the daily, insert only **wiki-links to `Themes/`** — recurring longitudinal patterns (e.g. `[[Themes/Study]]`, `[[Themes/Family]]`). Never link people (those live in `People/` and are already linked in the body of the daily) or single events. The daily frontmatter stays `tags: [daily-note]` unchanged.
