@@ -48,7 +48,12 @@ Open the folder in Obsidian (`Open folder as vault`). From the terminal, start C
 claude
 ```
 
-Try:
+First time only, run:
+
+- `/init` — sets up your personal compass (`Senso/Direzione.md` + `Senso/Pratiche.md`) conversationally, from the templates. The session start will nudge you to run it as long as `Senso/` is empty.
+
+Then in daily use:
+
 - `/daily` — create or open today's note
 - `/weekly` — weekly review (Sunday)
 - `/weave` — longitudinal pattern analysis (auto-runs during `/weekly`)
@@ -86,10 +91,11 @@ Try:
 | `/push` | Commit & push. |
 | `/check-links` | Scan for broken wiki-links. |
 | `/search` | Grep across the vault, grouped by folder. |
+| `/init` | First-run bootstrap: walks through Direzione + Pratiche, writes the files to `Senso/`. |
 
 ## Customization
 
-- **Personal compass**: copy `Templates/Direzione Template.md` to `Senso/Direzione.md` and `Templates/Pratiche Template.md` to `Senso/Pratiche.md`, then rewrite in your own voice. The templates contain guiding questions, not OKRs.
+- **Personal compass**: run `/init` (recommended) — it walks through the templates conversationally and writes `Senso/Direzione.md` + `Senso/Pratiche.md` in your own voice. Or do it by hand: copy the two files from `Templates/` and rewrite them. The templates contain guiding questions, not OKRs.
 - **Language**: skill prompts are in English. To use the system in another language, translate `.claude/skills/*/SKILL.md` files and `Templates/`.
 - **Hooks**: see `.claude/settings.json`. Disable by setting `command` to `null`.
 - **Permissions**: add personal entries in `.claude/settings.local.json` (gitignored).

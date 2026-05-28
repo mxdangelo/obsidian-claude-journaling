@@ -1,11 +1,11 @@
 #!/bin/bash
-# Session initialization hook for Obsidian PKM vault
-# Sets up environment variables and surfaces priorities for the Claude Code session
+# Session initialization hook for the journaling-first PKM vault.
+# Sets environment variables and surfaces what matters at session start.
 
-# Set vault path (defaults to current directory)
+# Vault path (defaults to cwd)
 export VAULT_PATH="${VAULT_PATH:-$(pwd)}"
 
-# Date variables for daily operations
+# Date variables
 export TODAY=$(date +%Y-%m-%d)
 export YESTERDAY=$(date -v-1d +%Y-%m-%d 2>/dev/null || date -d "yesterday" +%Y-%m-%d)
 export CURRENT_WEEK=$(date +%Y-W%V)
@@ -13,61 +13,58 @@ export CURRENT_WEEK=$(date +%Y-W%V)
 # Daily note path
 export DAILY_NOTE="$VAULT_PATH/${DAILY_NOTES_DIR:-Daily Notes}/$TODAY.md"
 
-# First-run detection
-if [ -f "$VAULT_PATH/FIRST_RUN" ]; then
-    echo ""
-    echo "Welcome to the Obsidian + Claude Code AI Accountability System!"
-    echo ""
-    echo "  The Cascade — your goals-to-tasks execution system:"
-    echo ""
-    echo "  3-Year Vision -> Yearly Goals -> Projects -> Monthly -> Weekly -> Daily"
-    echo "       |               |             |           |          |        |"
-    echo "  /goal-tracking  /goal-tracking  /project   /monthly   /weekly   /daily"
-    echo ""
-    echo "  Run /onboard to personalize your vault (takes ~2 minutes)."
-    echo "  This will ask your name, preferred review day, and goal areas."
-    echo ""
-    echo "  After that, try /daily to start your first morning routine."
-    echo ""
-    exit 0
-fi
-
 # Verify vault structure
 if [ ! -f "$VAULT_PATH/CLAUDE.md" ]; then
     echo "Note: Not in a vault root directory (no CLAUDE.md found)"
 fi
 
-# Output session info
 echo "PKM Session initialized"
 echo "  Vault: $VAULT_PATH"
 echo "  Today: $TODAY"
 
-# Surface today's ONE Big Thing from most recent weekly review
-WEEKLY_REVIEW="$VAULT_PATH/${GOALS_DIR:-Goals}/3. Weekly Review.md"
-if [ -f "$WEEKLY_REVIEW" ]; then
+# Senso bootstrap check — the compass must exist for /senso-tracking,
+# /weekly, /monthly to mean anything. Nudge until the user runs /init.
+SENSO_DIR="$VAULT_PATH/${SENSO_DIR:-Senso}"
+MISSING_SENSO=""
+if [ ! -f "$SENSO_DIR/Direzione.md" ]; then
+    MISSING_SENSO="${MISSING_SENSO}Direzione.md "
+fi
+if [ ! -f "$SENSO_DIR/Pratiche.md" ]; then
+    MISSING_SENSO="${MISSING_SENSO}Pratiche.md "
+fi
+if [ -n "$MISSING_SENSO" ]; then
+    echo ""
+    echo "  Senso not yet initialized (missing: $MISSING_SENSO)"
+    echo "  Run /init to set up your personal compass (Direzione + Pratiche)."
+    echo "  Until then, /senso-tracking, /weekly and /monthly have nothing to mirror."
+fi
+
+# Surface the most recent Weekly Review's ONE Big Thing, if any
+WEEKLY_REVIEW=$(find "$SENSO_DIR" -maxdepth 1 -name "Weekly Review*.md" 2>/dev/null | sort | tail -1)
+if [ -n "$WEEKLY_REVIEW" ] && [ -f "$WEEKLY_REVIEW" ]; then
     ONE_BIG_THING=$(grep -A 1 "ONE Big Thing" "$WEEKLY_REVIEW" | tail -1 | sed 's/^[> ]*//' | sed 's/^[[:space:]]*//')
-    if [ -n "$ONE_BIG_THING" ] && [ "$ONE_BIG_THING" != "" ]; then
+    if [ -n "$ONE_BIG_THING" ]; then
         echo "  ONE Big Thing: $ONE_BIG_THING"
     fi
 
-    # Days since last weekly review
-    LAST_REVIEW_DATE=$(grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' "$WEEKLY_REVIEW" | tail -1)
+    # Days since the last weekly review file (by filename date if present, else mtime)
+    LAST_REVIEW_DATE=$(echo "$WEEKLY_REVIEW" | grep -oE '[0-9]{4}-W[0-9]{2}' | tail -1)
     if [ -n "$LAST_REVIEW_DATE" ]; then
-        if date -j -f "%Y-%m-%d" "$LAST_REVIEW_DATE" +%s >/dev/null 2>&1; then
-            # macOS
-            LAST_EPOCH=$(date -j -f "%Y-%m-%d" "$LAST_REVIEW_DATE" +%s 2>/dev/null)
+        # Approximate: parse YYYY-Www to a date (Monday of that week)
+        YEAR=$(echo "$LAST_REVIEW_DATE" | cut -d'-' -f1)
+        WEEK=$(echo "$LAST_REVIEW_DATE" | sed 's/.*W//')
+        # macOS / Linux compatible: compute days from mtime as fallback
+        if date -j -f "%Y-%m-%d" "$TODAY" +%s >/dev/null 2>&1; then
             NOW_EPOCH=$(date +%s)
+            FILE_EPOCH=$(stat -f %m "$WEEKLY_REVIEW" 2>/dev/null)
         else
-            # Linux
-            LAST_EPOCH=$(date -d "$LAST_REVIEW_DATE" +%s 2>/dev/null)
             NOW_EPOCH=$(date +%s)
+            FILE_EPOCH=$(stat -c %Y "$WEEKLY_REVIEW" 2>/dev/null)
         fi
-        if [ -n "$LAST_EPOCH" ] && [ -n "$NOW_EPOCH" ]; then
-            DAYS_SINCE=$(( (NOW_EPOCH - LAST_EPOCH) / 86400 ))
+        if [ -n "$FILE_EPOCH" ]; then
+            DAYS_SINCE=$(( (NOW_EPOCH - FILE_EPOCH) / 86400 ))
             if [ "$DAYS_SINCE" -gt 7 ]; then
-                echo "  Weekly review overdue! Last review: $DAYS_SINCE days ago"
-            else
-                echo "  Last weekly review: $DAYS_SINCE days ago"
+                echo "  Weekly review overdue ($DAYS_SINCE days since last)"
             fi
         fi
     fi
