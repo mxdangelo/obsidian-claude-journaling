@@ -2,8 +2,12 @@
 # Session initialization hook for the journaling-first PKM vault.
 # Sets environment variables and surfaces what matters at session start.
 
-# Vault path (defaults to cwd)
-export VAULT_PATH="${VAULT_PATH:-$(pwd)}"
+# Vault path. Claude Code is supposed to expand ${cwd} from settings.json
+# before exporting, but in some contexts the literal string leaks through.
+# Fall back to pwd if VAULT_PATH is empty OR still contains the placeholder.
+if [ -z "$VAULT_PATH" ] || [ "$VAULT_PATH" = '${cwd}' ]; then
+    export VAULT_PATH="$(pwd)"
+fi
 
 # Date variables
 export TODAY=$(date +%Y-%m-%d)
