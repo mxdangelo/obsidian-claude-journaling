@@ -34,6 +34,8 @@ Longitudinal analysis of patterns emerging in the user's daily notes. Auto-runs 
 6. Update `last_weave` = today, `next_weave` = today + 14 days in the frontmatter of `Themes/Weave-Log.md`.
 7. For each pattern written to the log: if a `Themes/[Name].md` file already exists, append a short dated note (1-3 lines, prose, same voice). If the pattern is new and deserves its own file, create it with frontmatter `tags: [theme, theme/name]`. If it's minor or already captured in the log, leave `Themes/` unchanged.
 
+8. **People** — For each person with new traces since the last weave: distill the **portrait** at the top of their `People/[Name].md` (light, anchored to the traces — no invented synthesis), and if a pattern emerges, update or create `## Recurring threads`. Recompute the `relations:` and `themes:` links in the frontmatter from the traces and dailies. The dated **traces** are appended by the daily, not the weave: here you only distill. Same voice as the Themes notes.
+
 ## Tone
 
-Prose, external voice ("emerges", "returns", "is noticeable"). Quote real phrases from the dailies — don't paraphrase. Respect the language of the user's daily notes: if they journal in a non-English language, write the analysis in that language too.
+Prose, **second person** — speak to the user ("you noticed", "you feel", "you realize"), the voice of a companion observing alongside them; this applies to the `People/` notes too. Quote real phrases from the dailies — don't paraphrase. Respect the language of the user's daily notes: if they journal in a non-English language, write the analysis in that language too.

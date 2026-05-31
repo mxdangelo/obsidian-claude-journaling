@@ -52,3 +52,9 @@ When the user asks to close the day ("close the day", "end of day", etc.), fill 
 ## Themes
 
 In the `## Themes` section of the daily, insert only **wiki-links to `Themes/`** — recurring longitudinal patterns (e.g. `[[Themes/Study]]`, `[[Themes/Family]]`). Never link people (those live in `People/` and are already linked in the body of the daily) or single events. The daily frontmatter stays `tags: [daily-note]` unchanged.
+
+## People
+
+When a person appears in the daily with a meaningful passage (a reflection, a significant exchange — not a passing mention), **make sure a profile exists** in `People/`: check the folder, and create `People/[Name].md` if missing. Link them with `[[People/Name|Name]]` only on the **first** mention in the note; later occurrences stay plain text. Then **append a dated trace** to their file under `## Traces` (`**YYYY-MM-DD** — <in the user's words> [[Daily Notes/YYYY-MM-DD]]`).
+
+A People file grows in three layers: a light **portrait** at the top (who they are now, anchored to traces — never invented), **## Recurring threads** (patterns that return, distilled at `/weave`), and **## Traces** (the dated entries). The portrait and threads are distilled by `/weave`, not here — the daily only appends traces.
