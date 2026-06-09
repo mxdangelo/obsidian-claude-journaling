@@ -32,10 +32,11 @@ Create today's daily at `Daily Notes/YYYY-MM-DD.md`. If it exists, open it and s
    - `### 🏠 Personal` ← carry-overs from previous Personal
    - `### 💼 Work` ← carry-overs from previous Work (or leave the `tasks` query block intact)
 7. **Write** the file. Brief confirmation to the user.
+8. **Posthumous closing** (silent, after the confirmation — the user is writing by now): if the previous daily has day notes written but an empty `## Themes` section, run the **mechanical part** of "Closing the day" on it — populate its `## Themes` and append the People traces, both derivable from its text. Highs & Lows and the reflective sections stay as they are: without the user's words they don't get filled. No separate report: at most one line appended to the confirmation ("also closed yesterday: 2 traces").
 
 ## Notes
 
-- Don't call `TaskCreate`. Don't read `Senso/`, `Projects/`, `Themes/` unless the user explicitly asks ("morning routine", "cascade context", "review goals").
+- Don't call `TaskCreate`. Don't read `Senso/`, `Projects/`, `Themes/` unless the user explicitly asks ("morning routine", "cascade context", "review goals"). The posthumous closing of yesterday's note is the planned exception: there People/Themes are touched.
 - Respect the user's writing language: if previous dailies are in a non-English language, write section bodies in the same language. Headers from the template stay as templated.
 - If the user asks to update `Agenda.md`, check whether the current day's row is past and move it to the file's Archive section.
 

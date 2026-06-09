@@ -19,13 +19,14 @@ Weekly review centered on the past week's dailies, active projects, and open loo
 4. **Glob** `Daily Notes/*.md` for the past 7 days. **Read** them.
 5. **Glob** `Projects/*/CLAUDE.md`. **Read** the active ones.
 6. **Read** the previous Weekly Review (`Senso/Weekly Review YYYY-Wprev.md`) for "Open loops" and "How it went".
-7. **Compose the new review note**, populating from observed data:
+7. **Touch the month file** (`Senso/Monthly YYYY-MM.md`): clear critical deadlines that have passed; add new ones that emerged from `Agenda.md` or projects. If the file doesn't exist, suggest running `/monthly` — don't create it here, and don't write Theme/Intention on the user's behalf.
+8. **Compose the new review note**, populating from observed data:
    - **🎯 One thing only**: ask the user (don't infer — this is a commitment).
    - **📅 This week's commitments**: pull from `Agenda.md` (rows of the current week).
    - **Open loops from last week**: incomplete tasks from the previous review + recurring open questions across the dailies.
    - **Critical deadlines**: from `Agenda.md` + project deadlines.
    - **Planning** (Mon-Fri-Weekend): ask the user.
-8. **Write** the file. Brief confirmation.
+9. **Write** the file. Brief confirmation.
 
 ## Notes
 

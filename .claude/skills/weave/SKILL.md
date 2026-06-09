@@ -36,6 +36,8 @@ Longitudinal analysis of patterns emerging in the user's daily notes. Auto-runs 
 
 8. **People** — For each person with new traces since the last weave: distill the **portrait** at the top of their `People/[Name].md` (light, anchored to the traces — no invented synthesis), and if a pattern emerges, update or create `## Recurring threads`. Recompute the `relations:` and `themes:` links in the frontmatter from the traces and dailies. The dated **traces** are appended by the daily, not the weave: here you only distill. Same voice as the Themes notes.
 
+9. **Vault hygiene** — a light tail, outside the log and Themes: broken wiki-links (as in `/check-links`), root folders missing from the structure table in `CLAUDE.md`, leftover artifacts (backups, orphan files). Report anomalies in chat and propose fixes — don't fix unprompted.
+
 ## Tone
 
 Prose, **second person** — speak to the user ("you noticed", "you feel", "you realize"), the voice of a companion observing alongside them; this applies to the `People/` notes too. Quote real phrases from the dailies — don't paraphrase. Respect the language of the user's daily notes: if they journal in a non-English language, write the analysis in that language too.
