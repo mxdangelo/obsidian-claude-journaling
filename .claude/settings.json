@@ -1,0 +1,68 @@
+{
+  "env": {
+    "VAULT_PATH": "."
+  },
+  "permissions": {
+    "allow": [
+      "Read(*)",
+      "Bash(git:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(awk:*)",
+      "Bash(sed:*)",
+      "Bash(find:*)",
+      "Bash(date:*)",
+      "Bash(echo:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(rm:*)",
+      "Write(Daily Notes/**)",
+      "Write(Senso/**)",
+      "Write(Projects/**)",
+      "Write(Archives/**)",
+      "Write(Templates/**)",
+      "Write(Themes/**)",
+      "Write(People/**)",
+      "Write(Agenda.md)",
+      "Edit(Daily Notes/**)",
+      "Edit(Senso/**)",
+      "Edit(Projects/**)",
+      "Edit(Archives/**)",
+      "Edit(Templates/**)",
+      "Edit(Themes/**)",
+      "Edit(People/**)",
+      "Edit(Agenda.md)"
+    ],
+    "deny": [
+      "Edit(.claude/settings.json)",
+      "Edit(.claude/settings.local.json)",
+      "Edit(.claude/hooks/**)",
+      "Write(.git/**)",
+      "Bash(rm -rf:*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/session-init.sh\""
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/skill-discovery.sh\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

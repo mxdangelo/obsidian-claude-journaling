@@ -1,0 +1,7 @@
+This file is a first-run sentinel.
+
+While it exists, the SessionStart hook will gently suggest running `/init` to
+set up your personal compass (Senso/Direzione.md and Senso/Pratiche.md).
+
+`/init` deletes this file as its final step, once at least one compass file has
+been created. You can also delete it by hand if you prefer to skip onboarding.

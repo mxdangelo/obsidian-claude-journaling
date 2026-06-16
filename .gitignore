@@ -1,0 +1,16 @@
+# Obsidian local state (not meant to be shared)
+.obsidian/workspace*
+.obsidian/cache
+
+# Obsidian trash
+.trash/
+
+# OS cruft
+.DS_Store
+
+# Machine-local Claude settings (never commit secrets or local overrides)
+settings.local.json
+.claude/settings.local.json
+
+# Anything you keep private and out of the public release
+private/

@@ -1,0 +1,4 @@
+# Normalize line endings. Markdown and config can be platform-native, but shell
+# scripts must stay LF or bash breaks on clone (the hooks are .sh).
+* text=auto
+*.sh text eol=lf
