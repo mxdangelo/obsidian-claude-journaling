@@ -1,3 +1,11 @@
+> ⚠️ **This repository is archived and no longer maintained.**
+> The system has moved to **[obsidian-claude-pkm](https://github.com/mxdangelo/obsidian-claude-pkm)** — the
+> same journaling-first core, now with the full system (projects as a single task source, the
+> knowledge-side capture cycle, longitudinal weaving) and a documented *minimal setup* for those
+> who want only this lean journaling version. Start there.
+
+---
+
 # A journaling-first PKM for Obsidian + Claude Code
 
 **A compass, not a cascade.**
